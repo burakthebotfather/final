@@ -11,9 +11,9 @@ import logging
 
 # --- Загрузка конфигурации ---
 load_dotenv()
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-openai.api_key = OPENAI_API_KEY
+TELEGRAM_BOT_TOKEN = os.getenv("6884333376:AAHT2GCHnbC6rXj4SxKlDhd-de2FIOqiltI")
+OPENAI_API_KEY = os.getenv("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")
+openai.api_key = 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
 
 # --- Логи ---
 logging.basicConfig(level=logging.INFO)
