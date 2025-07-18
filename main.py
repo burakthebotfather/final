@@ -11,9 +11,9 @@ import logging
 
 # --- Загрузка конфигурации ---
 load_dotenv()
-TELEGRAM_BOT_TOKEN = os.getenv("6884333376:AAHT2GCHnbC6rXj4SxKlDhd-de2FIOqiltI")
-OPENAI_API_KEY = os.getenv("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")
-openai.api_key = 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
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
 
 # --- Логи ---
 logging.basicConfig(level=logging.INFO)
@@ -164,7 +164,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logging.error(e)
         await message.reply_text("⚠️ Ошибка при обработке заявки. Попробуйте ещё раз.")
 
-# --- Команда /доход ---
+# --- Команда /dohod ---
 async def handle_dohod(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
     total = get_income_today(user_id)
@@ -174,6 +174,6 @@ async def handle_dohod(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    app.add_handler(CommandHandler("доход", handle_dohod))
+    app.add_handler(CommandHandler("dohod", handle_dohod))
     print("🚀 Бот запущен...")
     app.run_polling()
